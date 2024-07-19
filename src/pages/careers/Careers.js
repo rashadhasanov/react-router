@@ -1,8 +1,6 @@
-import { Link, useLoaderData } from "react-router-dom";
-
+import { careers } from "../../../src/data/data.js";
+import { Link } from "react-router-dom";
 export default function Careers() {
-  const careers = useLoaderData();
-
   return (
     <div className="careers">
       {careers.map((career) => (
@@ -14,13 +12,3 @@ export default function Careers() {
     </div>
   );
 }
-
-// data loader
-export const careersLoader = async () => {
-  const res = await fetch("http://localhost:4000/careers");
-
-  if (!res.ok) {
-    throw Error("Could not fetch the careers");
-  }
-  return res.json();
-};

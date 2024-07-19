@@ -11,12 +11,9 @@ import HelpLayout from "./layouts/HelpLayout";
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
 import NotFound from "./pages/NotFound";
-import Careers, { careersLoader } from "./pages/careers/Careers";
+import Careers from "./pages/careers/Careers";
 import CareersLayout from "./layouts/CareersLayout";
-import CareerDetails, {
-  careerDetailsLoader,
-} from "./pages/careers/CareerDetails";
-import CareersError from "./pages/careers/CareersError";
+import CareerDetails from "./pages/careers/CareerDetails";
 
 const router = createBrowserRouter(
   createRoutesFromChildren(
@@ -29,18 +26,8 @@ const router = createBrowserRouter(
       </Route>
 
       <Route path="careers" element={<CareersLayout />}>
-        <Route
-          index
-          errorElement={<CareersError />}
-          loader={careersLoader}
-          element={<Careers />}
-        />
-        <Route
-          path=":id"
-          element={<CareerDetails />}
-          loader={careerDetailsLoader}
-          errorElement={<CareersError />}
-        />
+        <Route index element={<Careers />} />
+        <Route path=":id" element={<CareerDetails />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
